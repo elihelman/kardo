@@ -241,7 +241,7 @@
       waBoard:function(n,p){return "Hi Kardo Deli! I'd like to order the "+n+" ("+p+"). ";}
     },
     he:{
-      eyebrow:"Pitmaster Yoel Sandel \u05d4\u05d2\u05d9\u05e2 \u05dc\u05e7\u05d0\u05e8\u05d3\u05d5 \u05d3\u05dc\u05d9!",
+      eyebrow:"Pitmaster Yoel Sandel<br>\u05d4\u05d2\u05d9\u05e2 \u05dc\u05e7\u05d0\u05e8\u05d3\u05d5 \u05d3\u05dc\u05d9!",
       heroTitle:"\u05d1\u05e9\u05e8\u05d9\u05dd \u05de\u05e2\u05d5\u05e9\u05e0\u05d9\u05dd \u05e4\u05e8\u05d9\u05de\u05d9\u05d5\u05dd \u05d1\u05e2\u05d1\u05d5\u05d3\u05ea \u05d9\u05d3 \u05d1\u05db\u05e9\u05e8\u05d5\u05ea \u05d1\u05d3\"\u05e6 \u05d4\u05e2\u05d3\u05d4 \u05d4\u05d7\u05e8\u05d3\u05d9\u05ea",
       heroSub:"\u05d1\u05dc\u05e2\u05d3\u05d9 \u05d1\u05e7\u05d0\u05e8\u05d3\u05d5 \u05d3\u05dc\u05d9! \u05e7\u05d5\u05dc\u05e7\u05e6\u05d9\u05d9\u05ea \u05de\u05d2\u05e9\u05d9 \u05d4\u05d0\u05d9\u05e8\u05d5\u05d7 \u05e9\u05dc \u05d9\u05d5\u05d0\u05dc \u05e1\u05e0\u05d3\u05dc \u05e2\u05dd \u05d1\u05e9\u05e8\u05d9\u05dd \u05de\u05e2\u05d5\u05e9\u05e0\u05d9\u05dd \u05d1\u05e2\u05d1\u05d5\u05d3\u05ea \u05d9\u05d3. \u05d7\u05d2\u05d9\u05d2\u05d4 \u05e9\u05dc \u05d8\u05e2\u05de\u05d9\u05dd \u05de\u05e9\u05d5\u05d1\u05d7\u05d9\u05dd \u05dc\u05d7\u05d2 \u05e9\u05de\u05d7 \u05d5\u05d8\u05e2\u05d9\u05dd \u05d1\u05de\u05d9\u05d5\u05d7\u05d3.",
       orderWhatsapp:"\u05d4\u05d6\u05de\u05e0\u05d4 \u05d1\u05d5\u05d5\u05d0\u05d8\u05e1\u05d0\u05e4",
@@ -309,7 +309,9 @@
     document.documentElement.dir = (lang === "he") ? "rtl" : "ltr";
     document.querySelectorAll("[data-i18n]").forEach(function(el){
       var k = el.getAttribute("data-i18n");
-      if (t[k] !== undefined) el.textContent = t[k];
+      if (t[k] === undefined) return;
+      if (k === "eyebrow") { el.innerHTML = t[k]; }
+      else { el.textContent = t[k]; }
     });
     document.getElementById("lang-toggle").textContent = t.langBtn;
     var general = waLink(t.waGeneral);
