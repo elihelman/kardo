@@ -222,18 +222,18 @@
 
   var I18N = {
     en:{
-      eyebrow:"Premium artisanal smoked meats",
-      heroTitle:"Meat boards, built to share.",
-      heroSub:"Six hand-built boards of house-smoked charcuterie, brisket and biltong — from a taster to a full party spread.",
+      eyebrow:"Hand-crafted, artisanal charcuterie made especially for you",
+      heroTitle:"Meat Boards in Jerusalem",
+      heroSub:"A true artisan, Yoeli researches and perfects the arts of charcuterie and artisanal smoking. Using methods learned in Texas and refined over years, he brings you a mouth-watering variety — all hand-crafted and prepared fresh to order.",
       orderWhatsapp:"Order on WhatsApp",
       seeBoards:"See the boards",
       scroll:"SCROLL",
       boardsKick:"The Boards",
-      boardsTitle:"Six ways to feast",
+      boardsTitle:"Charcuterie at its best",
       orderTitle:"Ready to order?",
       orderSub:"Send us a message and we'll sort out pickup, delivery and timing.",
       messageUs:"Message us now",
-      footTag:"Meat Boards \u00b7 Premium artisanal smoked meats \u00b7 Glatt Kosher",
+      footTag:"Authentic Israeli smoked meats \u00b7 Hand-crafted charcuterie \u00b7 Glatt Kosher",
       order:"Order this board",
       from:"from",
       langBtn:"\u05e2\u05d1\u05e8\u05d9\u05ea",
@@ -275,6 +275,27 @@
 
   function waLink(msg){ return "https://wa.me/"+PHONE+"?text="+encodeURIComponent(msg); }
 
+  // Special referral link: /?ref=ELI.H  -> all WhatsApp messages use the English
+  // referral sentence with the tracking number, regardless of page language.
+  var REF_ID = "3473699404";
+  var REF_BASE = "Hello, I arrived through "+REF_ID+" and I\u2019d be happy to place an order";
+  var params = new URLSearchParams(window.location.search);
+  var refVal = (params.get("ref") || "").trim().toLowerCase();
+  var IS_REF = (refVal === "eli.h");
+
+  // General order message (hero, band, floating button)
+  function generalMsg(t){
+    return IS_REF ? REF_BASE : t.waGeneral;
+  }
+  // Per-product message: referral sentence + English product name, else localized
+  function boardMsg(t, b, priceLabel){
+    if (IS_REF){
+      var enPrice = (b.from ? "from " : "") + b.price;
+      return REF_BASE + " \u2014 " + b.en + " (" + enPrice + ")";
+    }
+    return t.waBoard(b[currentLang], priceLabel);
+  }
+
   var currentLang = "en";
 
   function renderBoards(){
@@ -285,7 +306,7 @@
       var name = b[currentLang];
       var fromLbl = (b.from && t.from) ? t.from+" " : "";
       var priceLabel = fromLbl + b.price;
-      var msg = t.waBoard(name, priceLabel);
+      var msg = boardMsg(t, b, priceLabel);
       var el = document.createElement("article");
       el.className = "card";
       el.innerHTML =
@@ -314,7 +335,7 @@
       else { el.textContent = t[k]; }
     });
     document.getElementById("lang-toggle").textContent = t.langBtn;
-    var general = waLink(t.waGeneral);
+    var general = waLink(generalMsg(t));
     document.getElementById("hero-order").href = general;
     document.getElementById("band-order").href = general;
     document.getElementById("fab").href = general;
