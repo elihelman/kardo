@@ -65,8 +65,8 @@
   .brand img{width:36px;height:auto;background:var(--cream);border-radius:8px;padding:3px}
   .brand-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;letter-spacing:.14em;color:#fff;white-space:nowrap}
   .brand-name span{color:var(--gold-light)}
-  .header-right{display:flex;align-items:center;gap:.8rem}
-  .kosher{height:44px;width:auto;opacity:.92}
+  .header-right{display:flex;align-items:center;gap:1.1rem}
+  .kosher{height:38px;width:auto;opacity:.92;margin:0 .2rem}
   .lang-btn{
     background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--cream);
     font-family:'Inter',sans-serif;font-weight:600;font-size:.82rem;
@@ -83,17 +83,25 @@
 
   /* ---------- Hero ---------- */
   .hero{
-    position:relative;min-height:82vh;
+    position:relative;min-height:88vh;min-height:88dvh;
     display:flex;flex-direction:column;justify-content:center;align-items:center;
-    text-align:center;padding:5rem 1.4rem 4rem;
+    text-align:center;padding:2.2rem 1.4rem 3rem;
     background:
       radial-gradient(120% 90% at 50% 0%, rgba(31,92,61,.35), transparent 60%),
       linear-gradient(180deg, rgba(20,61,41,.55), rgba(26,22,19,.92) 70%),
       var(--hero-img) center/cover no-repeat;
   }
+  @media(max-width:520px){
+    .hero{justify-content:flex-start;padding-top:1.6rem;min-height:auto}
+  }
   .hero-eyebrow{font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;color:var(--gold-light);margin-bottom:1rem}
   .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.8rem,9vw,5.5rem);line-height:1.02;letter-spacing:-.01em;color:#fff;max-width:16ch}
   html[lang="he"] .hero h1{font-family:'Heebo',sans-serif;font-weight:800}
+  @media(max-width:520px){
+    .hero h1{font-size:clamp(2rem,7.5vw,3rem)}
+    .hero p{font-size:.98rem}
+    .hero-eyebrow{font-size:.95rem}
+  }
   .hero p{margin-top:1.3rem;max-width:36ch;color:var(--cream-dim);font-size:1.05rem}
   .hero-cta{margin-top:2.2rem;display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
   .btn{
@@ -202,8 +210,7 @@
     </a>
     <a class="btn btn-ghost" href="#boards" data-i18n="seeBoards">See the boards</a>
   </div>
-  <div class="scroll-hint" data-i18n="scroll">SCROLL</div>
-</section>
+  </section>
 
 <div class="section-head" id="boards">
   <div class="kick" data-i18n="boardsKick">The Boards</div>
@@ -246,7 +253,6 @@
       heroSub:"A true artisan, Yoeli researches and perfects the arts of charcuterie and artisanal smoking. Using methods learned in Texas and refined over years, he brings you a mouth-watering variety — all hand-crafted and prepared fresh to order.",
       orderWhatsapp:"Order on WhatsApp",
       seeBoards:"See the boards",
-      scroll:"SCROLL",
       boardsKick:"The Boards",
       boardsTitle:"Charcuterie at its best",
       orderTitle:"Ready to order?",
@@ -267,7 +273,6 @@
       heroSub:"\u05d1\u05dc\u05e2\u05d3\u05d9 \u05d1\u05e7\u05d0\u05e8\u05d3\u05d5 \u05d3\u05dc\u05d9! \u05e7\u05d5\u05dc\u05e7\u05e6\u05d9\u05d9\u05ea \u05de\u05d2\u05e9\u05d9 \u05d4\u05d0\u05d9\u05e8\u05d5\u05d7 \u05e9\u05dc \u05d9\u05d5\u05d0\u05dc \u05e1\u05e0\u05d3\u05dc \u05e2\u05dd \u05d1\u05e9\u05e8\u05d9\u05dd \u05de\u05e2\u05d5\u05e9\u05e0\u05d9\u05dd \u05d1\u05e2\u05d1\u05d5\u05d3\u05ea \u05d9\u05d3. \u05d7\u05d2\u05d9\u05d2\u05d4 \u05e9\u05dc \u05d8\u05e2\u05de\u05d9\u05dd \u05de\u05e9\u05d5\u05d1\u05d7\u05d9\u05dd \u05dc\u05d7\u05d2 \u05e9\u05de\u05d7 \u05d5\u05d8\u05e2\u05d9\u05dd \u05d1\u05de\u05d9\u05d5\u05d7\u05d3.",
       orderWhatsapp:"\u05d4\u05d6\u05de\u05e0\u05d4 \u05d1\u05d5\u05d5\u05d0\u05d8\u05e1\u05d0\u05e4",
       seeBoards:"\u05dc\u05de\u05d2\u05e9\u05d9\u05dd",
-      scroll:"\u05d2\u05dc\u05d5\u05dc",
       boardsKick:"\u05d4\u05de\u05d2\u05e9\u05d9\u05dd",
       boardsTitle:"\u05e9\u05e9 \u05e1\u05d9\u05d1\u05d5\u05ea \u05dc\u05d4\u05d9\u05d5\u05ea \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05d1\u05d7\u05d2",
       orderTitle:"\u05de\u05d5\u05db\u05e0\u05d9\u05dd \u05dc\u05d4\u05d6\u05de\u05d9\u05df?",
