@@ -81,18 +81,13 @@
   .builder{background:var(--charcoal-2);border:1px solid var(--line);border-radius:18px;padding:1.4rem 1.2rem 1.5rem;box-shadow:var(--shadow)}
   .builder .intro{color:var(--cream-dim);font-size:.95rem;margin-bottom:1.2rem;text-align:center}
   .item-list{display:flex;flex-direction:column;gap:.2rem}
-  .item{display:flex;align-items:center;gap:.7rem;padding:.7rem .3rem;border-bottom:1px solid rgba(198,154,78,.12);flex-wrap:wrap}
+  .item{display:flex;flex-direction:column;gap:.55rem;padding:.85rem .3rem;border-bottom:1px solid rgba(198,154,78,.12)}
   .item:last-child{border-bottom:none}
-  .item .num{width:26px;height:26px;flex:none;border-radius:50%;background:rgba(198,154,78,.16);color:var(--gold-light);font-size:.78rem;font-weight:700;display:grid;place-items:center;direction:ltr}
+  .item .name{font-size:1.02rem;line-height:1.3;font-weight:500;color:var(--cream)}
+  .item-controls{display:flex;align-items:center;gap:.9rem}
   .item .chk{width:22px;height:22px;flex:none;accent-color:var(--green);cursor:pointer}
-  .item .name{flex:1 1 auto;min-width:0;font-size:.98rem;line-height:1.35}
-  .item .price{color:var(--gold-light);font-size:.88rem;direction:ltr;white-space:nowrap;flex:none}
+  .item .price{color:var(--gold-light);font-size:.9rem;direction:ltr;white-space:nowrap;flex:none}
   .item .qty{flex:none;margin-inline-start:auto}
-  @media(max-width:560px){
-    .item{gap:.5rem}
-    .item .name{flex:1 1 100%;order:5;padding-inline-start:34px}
-    .item .num{order:1}.item .chk{order:2}.item .price{order:3}.item .qty{order:4;margin-inline-start:auto}
-  }
   .qty{display:flex;align-items:center;gap:.4rem;flex:none}
   .qty button{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--cream);font-size:1.1rem;cursor:pointer;line-height:1;font-family:inherit}
   .qty button:hover{background:rgba(255,255,255,.1)}
@@ -439,13 +434,14 @@
       row.className = "item";
       var priceHtml = opts.showPrice ? '<span class="price">₪'+it.price+'</span>' : '';
       row.innerHTML =
-        '<span class="num">'+String(i+1).padStart(2,"0")+'</span>'+
-        '<input type="checkbox" class="chk" aria-label="'+it[LANG]+'">'+
         '<span class="name">'+it[LANG]+'</span>'+
-        priceHtml+
-        '<div class="qty"><button type="button" data-d="-1">−</button>'+
-        '<input type="number" min="1" value="1" inputmode="numeric">'+
-        '<button type="button" data-d="1">+</button></div>';
+        '<div class="item-controls">'+
+          '<input type="checkbox" class="chk" aria-label="'+it[LANG]+'">'+
+          priceHtml+
+          '<div class="qty"><button type="button" data-d="1">+</button>'+
+          '<input type="number" min="1" value="1" inputmode="numeric">'+
+          '<button type="button" data-d="-1">−</button></div>'+
+        '</div>';
       var chk = $(".chk",row), qtyIn = $("input[type=number]",row);
       chk.addEventListener("change", function(){ state[i].checked = chk.checked; updateHint(); });
       $("[data-d='-1']",row).addEventListener("click", function(){ qtyIn.value = Math.max(1,(+qtyIn.value||1)-1); state[i].qty=+qtyIn.value; });
