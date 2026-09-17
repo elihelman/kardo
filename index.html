@@ -113,6 +113,9 @@
   footer .fbrand{font-family:'Fraunces',serif;letter-spacing:.14em;color:var(--cream);font-size:1rem;margin-bottom:.4rem}
   footer .addr{margin:.5rem 0}
   footer .phone{direction:ltr;color:var(--gold-light);font-family:'Fraunces',serif;font-size:1.1rem;margin-top:.3rem}
+  footer .email{direction:ltr;margin-top:.3rem;font-size:.9rem}
+  footer .email a{color:var(--cream-dim);text-decoration:none}
+  footer .email a:hover{color:var(--gold-light)}
   footer .copy{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.72rem;direction:ltr}
   footer .copy .tm{font-size:.7em;vertical-align:baseline;margin-inline-start:1px}
 
@@ -177,6 +180,7 @@
   <div class="fbrand">KARDO DELI</div>
   <div class="addr" data-i18n="footAddr"></div>
   <div class="phone">02-655-0738</div>
+  <div class="email"><a href="mailto:kardo@lim.co.il">kardo@lim.co.il</a></div>
   <div class="copy" dir="ltr">Datilishes<span class="tm">™</span>. All rights reserved <span id="year"></span> ©</div>
 </footer>
 
@@ -223,7 +227,7 @@
       orderThis:"לחצו כאן להזמנה מהירה",
       imgNote:"התמונה להמחשה בלבד",
       kiddushKick:"", kiddushTitle:"תפריט קידושים ושמחות בית השואבה",
-      kiddushIntro:"לקבלת הצעת מחיר סמנו את המוצרים ואת הכמות הרצויה<br>שלחו לוואטסאפ שלנו ותקבלו הצעת מחיר",
+      kiddushIntro:"לקבלת הצעת מחיר סמנו את המוצרים ואת כמות הסועדים<br>שלחו לוואטסאפ שלנו ותקבלו הצעת מחיר מסודרת ומתאימה לפי הצרכים שלכם.",
       sukkotKick:"", sukkotTitle:"תפריט סוכות ושמחת תורה",
       sukkotIntro:"סמנו את המוצרים והכמות הרצויה ושלחו הזמנה ישירה בוואטסאפ.",
       namePh:"שם (לא חובה)", phonePh:"טלפון (לא חובה)",
@@ -237,24 +241,24 @@
       platterLead:"אשמח להזמין:",
       qtyLabel:"בחרו כמות", perUnit:"(למגש)",
       tray:"תבנית 9×13 (23×33 ס״מ)",
-      moreSizes:"לעוד גדלים וסוגי פלטות לחצו כאן",
-      yoelMsg:"שלום, אשמח להזמין פלטה מיוחדת.",
+      moreSizes:"לפלטות בהתאמה אישית לחצו כאן",
+      yoelMsg:"שלום, אני רוצה להזמין פלטה בהתאמה אישית. אשמח לקבל הצעת מחיר.",
       footAddr:"שדרות הקארדו בשנלר, מלכי ישראל 32, ירושלים · חניה במקום",
       waGeneral:"שלום, אשמח לקבל פרטים על הפלטות והתפריטים."
     },
     en:{
       langBtn:"עברית",
-      heroEyebrow:"Chag Sameach from Kardo Deli · Boutique deli, Badatz Eida Chareidis · A rich culinary menu for Yom Tov & Shabbos",
-      heroTitle:"Premium Smoked Meat Boards, Kiddush & Simchas Beis Hashoeva Orders, and a Huge Sukkos & Simchas Torah Menu",
+      heroEyebrow:"Chag Sameach from Kardo Deli · Boutique deli, Badatz Eida Chareidis · A rich culinary menu for Yom Tov, Shabbos",
+      heroTitle:"Premium Smoked Meat Boards, Kiddush, Simchas Beis Hashoeva Orders, and a Sukkos, Simchas Torah Menu",
       heroSub:"Order directly via WhatsApp.",
       plattersKick:"", plattersTitle:"Premium Smoked Meat Boards by Pitmaster Yoel Sandel",
       plattersSub:"Choose a size and send your order straight to WhatsApp.",
       chooseSize:"Choose size:",
       orderThis:"Tap here for a quick order",
       imgNote:"Image for illustration only",
-      kiddushKick:"", kiddushTitle:"Kiddush & Simchas Beis Hashoeva Menu",
-      kiddushIntro:"For a quote, select the items and quantities, send to our WhatsApp and we'll get back to you with a price.",
-      sukkotKick:"", sukkotTitle:"Sukkos & Simchas Torah Menu",
+      kiddushKick:"", kiddushTitle:"Kiddush, Simchas Beis Hashoeva Menu",
+      kiddushIntro:"For a quote, select the items and the number of guests<br>Send to our WhatsApp and we'll send back an organized quote tailored to your needs.",
+      sukkotKick:"", sukkotTitle:"Sukkos, Simchas Torah Menu",
       sukkotIntro:"Select items and quantities and send your order straight to WhatsApp.",
       namePh:"Name (optional)", phonePh:"Phone (optional)",
       send:"Send order on WhatsApp",
@@ -267,8 +271,8 @@
       platterLead:"I'd like to order:",
       qtyLabel:"Choose quantity", perUnit:"(per board)",
       tray:'9×13 tray (23×33 cm)',
-      moreSizes:"For more sizes & board types, tap here",
-      yoelMsg:"Hello, I'd like to order a special board.",
+      moreSizes:"For a custom board, tap here",
+      yoelMsg:"Hello, I'd like to order a custom board. I'd be glad to receive a quote.",
       footAddr:"Kardo Deli by Shneler, Malchei Yisrael 32, Jerusalem · Parking on site",
       waGeneral:"Hello, I'd like details about the boards and menus."
     }
@@ -317,28 +321,28 @@
   // ---- Sukkot items (with prices) ----
   var SUKKOT = [
     {he:"מרק עוף מסורתי (1 ליטר)", en:"Traditional Chicken Soup (1 Liter)", price:160},
-    {he:"סלמון צלוי בגריל (10 יח׳)", en:"Char-Grilled Salmon (10 pcs)", price:550},
-    {he:"סלמון טרי מרוקאי פיקנטי (10 יח׳)", en:"Spicy Moroccan Salmon (10 pcs)", price:550},
-    {he:"סלמון טרי טריאקי (10 יח׳)", en:"Teriyaki Salmon (10 pcs)", price:550},
-    {he:"סלמון טרי חמוץ מתוק (10 יח׳)", en:"Sweet & Sour Salmon (10 pcs)", price:550},
-    {he:"סלמון טרי חרדל ודבש (10 יח׳)", en:"Honey Mustard Salmon (10 pcs)", price:550},
-    {he:"גפילטע פיש הונגרי (1 רולל)", en:"Hungarian Gefilte Fish (1 roll)", price:220},
+    {he:"סלמון צלוי בגריל (10 יח׳)", en:"Char-Grilled Salmon (10 pcs)", price:450},
+    {he:"סלמון טרי מרוקאי פיקנטי (10 יח׳)", en:"Spicy Moroccan Salmon (10 pcs)", price:450},
+    {he:"סלמון טרי טריאקי (10 יח׳)", en:"Teriyaki Salmon (10 pcs)", price:450},
+    {he:"סלמון טרי חמוץ מתוק (10 יח׳)", en:"Sweet & Sour Salmon (10 pcs)", price:450},
+    {he:"סלמון טרי חרדל ודבש (10 יח׳)", en:"Honey Mustard Salmon (10 pcs)", price:450},
+    {he:"גפילטע פיש הונגרי (1 רול)", en:"Hungarian Gefilte Fish (1 rol)", price:220},
     {he:"בריסקט מעושן טקסס (2 ק\"ג)", en:"Slow-Smoked Texas Brisket (2 kg)", price:840},
     {he:"צלעות אסאדו מעושנות (2 ק\"ג)", en:"Low & Slow Asado Ribs (2 kg)", price:975},
-    {he:"שורט ריבס פלאנקן (2 ק\"ג)", en:"Braised Flanken Short Ribs (2 kg)", price:635},
+    {he:"שורט ריבס פלאנקן (2 ק\"ג)", en:"Braised Flanken Short Ribs (2 kg)", price:960},
     {he:"צלי בקר ביין וירקות שורש (2 ק\"ג)", en:"Wine-Braised Minute Roast (2 kg)", price:840},
     {he:"לשון בקר כבושה (1.5 ק\"ג)", en:"Pickled Tongue (1.5 kg)", price:975},
-    {he:"טשולנט בשרי", en:"Beef Cholent", price:255},
-    {he:"טשולנט גריסים לייקווד", en:"Lakewood Barley Cholent", price:324},
+    {he:"טשולנט בשרי", en:"Beef Cholent", price:285},
+    {he:"טשולנט גריסים לייקווד", en:"Lakewood Barley Cholent", price:345},
     {he:"כרוב ממולא (10 יח׳)", en:"Stuffed Cabbage (10 pcs)", price:450},
-    {he:"נקניק בורקס (18 יח׳)", en:"Classic Deli Franks (18 pcs)", price:180},
+    {he:"נקניק בורקס חריף (18 יח׳)", en:"Classic Deli Franks in a Blank L (18 pcs)", price:180},
     {he:"דלי רול (18 יח׳)", en:"Flaky Pastrami Deli Roll (18 pcs)", price:380},
-    {he:"פרגיות צלויות על האש (10 יח׳)", en:"Fire-Grilled Baby Chicken (10 pcs)", price:450},
-    {he:"חזה עוף על הגריל (10 יח׳)", en:"Grilled Chicken (10 pcs)", price:400},
-    {he:"כרעיים מעושנות בטעם פירות (10 יח׳)", en:"Hickory-Smoked Chicken Quarters (10 pcs)", price:450},
+    {he:"פרגיות צלויות על האש (10 יח׳)", en:"Fire-Grilled Baby Chicken/Pargiot (10 pcs)", price:400},
+    {he:"חזה עוף על הגריל (10 יח׳)", en:"Grilled Chicken (10 pcs)", price:350},
+    {he:"כרעיים מעושנות בטעם פירות (10 יח׳)", en:"Hickory-Smoked Chicken Quarters (10 pcs)", price:400},
     {he:"פרגיות ממולאות בשר בקר (10 יח׳)", en:"Beef-Stuffed Baby Chicken (10 pcs)", price:650},
     {he:"שניצלונים", en:"Schnitzelonim", price:360},
-    {he:"שניצל (10 יח׳)", en:"Schnitzel (10 pcs)", price:400},
+    {he:"שניצל (10 יח׳)", en:"Schnitzel (10 pcs)", price:350},
     {he:"ססמי עוף", en:"Sesame Chicken", price:360},
     {he:"פאפרס", en:"Poppers", price:380},
     {he:"קוגל תפו\"א אוברנייט", en:"Overnight Potato Kugel", price:169},
@@ -353,7 +357,7 @@
     {he:"נודלס מוקפץ בירקות", en:"Stir-Fried Vegetable Noodles", price:260},
     {he:"אנטיפסטי", en:"Roasted Mediterranean Antipasti", price:260},
     {he:"ירק סיני מוקפץ", en:"Wok-Tossed Chinese Vegetables", price:260},
-    {he:"קומפוט תפו\"ע (1 ליטר)", en:"Compote (2 lbs)", price:90}
+    {he:"קומפוט תפו\"ע (1 ליטר)", en:"Compote (1 Liter)", price:90}
   ];
 
   var $ = function(s,el){return (el||document).querySelector(s);};
@@ -435,7 +439,7 @@
   function renderBuilder(mountId, items, opts){
     var t = T[LANG];
     // Sukkot: items without a stated unit get a tray-size note appended.
-    function hasUnit(nm){ return /יח|ליטר|רולל|ק"?ג|pcs|Liter|roll|kg/i.test(nm); }
+    function hasUnit(nm){ return /יח|ליטר|רול|ק"?ג|pcs|Liter|rol|kg/i.test(nm); }
     function dispName(it){
       var nm = it[LANG];
       if (opts.tray && !hasUnit(nm)) nm += " " + t.tray;
@@ -525,8 +529,8 @@
     });
     $("#lang-toggle").textContent = t.langBtn;
     $("#fab").href = waLink(t.waGeneral);
-    var yoelLines = headerLinesYoel(t);
-    $("#more-sizes").href = "https://wa.me/"+YOEL_PHONE+"?text="+encodeURIComponent(yoelLines.join("\n"));
+    var customLines = headerLinesYoel(t);
+    $("#more-sizes").href = "https://wa.me/"+PHONE+"?text="+encodeURIComponent(customLines.join("\n"));
   }
 
   function renderAll(){
